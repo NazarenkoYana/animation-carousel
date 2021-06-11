@@ -1,0 +1,10 @@
+@import "variables";
+
+
+button{
+  padding: $button_padding;
+
+  &:hover{
+    background: $background_color_hover;
+  }
+}

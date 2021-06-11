@@ -1,0 +1,64 @@
+@import "buttons";
+
+body {
+  background-image: url("https://kakoyfilmposmotret.ru/uploads/posts/2013-01/1359134736_monsters-corporation-4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+$slideWidth: 250px;
+$slidesCount: 9;
+$slideRotateStep: 360 / ($slidesCount );
+
+
+.scene {
+  width: 250px;
+  height: 220px;
+  position: relative;
+  perspective: 1200px;
+  perspective-origin: top center;
+  margin: 200px auto 0;
+
+  .carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: .3s all linear;
+
+    &__cell {
+      position: absolute;
+      width: 250px;
+      height: 220px;
+      left: 10px;
+      top: 10px;
+
+      img {
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 5px #dadada;
+      }
+
+      @for $i from 0 through $slidesCount - 1 {
+        &:nth-child(#{$i+1}) {
+          transform: rotateY(#{$i * $slideRotateStep}deg) translateZ(#{($slideWidth / 6) * $slidesCount});
+        }
+      }
+    }
+  }
+}
+
+.container-button {
+  display: block;
+  text-align: center;
+  margin-top: 200px;
+
+  button {
+    width: 150px;
+    padding: 10px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+  }
+}
